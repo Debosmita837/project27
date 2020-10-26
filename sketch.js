@@ -19,11 +19,11 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	bob3 = new bob(400, 400, 60);
-	bob2 = new bob(340, 400, 60);
-	bob4 = new bob(460, 400, 60);
-	bob5 = new bob(520, 400, 60);
-	bob1 = new bob(280, 400, 60);
+	bob3 = new bob(400, 400, 25);
+	bob2 = new bob(340, 400, 25);
+	bob4 = new bob(460, 400, 25);
+	bob5 = new bob(520, 400, 25);
+	bob1 = new bob(280, 400, 25);
 	roof = new roof(400, 200, 400, 20);
 	rope1 = new rope(bob1.body, roof.body, -120, 0);
 	rope2 = new rope(bob2.body, roof.body, -60, 0);
@@ -53,6 +53,10 @@ function draw() {
  
 }
 
-
+function keyPressed(){
+	if(keyCode === UP_ARROW){
+		Matter.Body.applyForce(bob1.body, bob1.position, {x: 50, y: 50})
+	}
+}
 
 

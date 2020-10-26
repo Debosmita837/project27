@@ -17,7 +17,7 @@ class bob {
         
         push()
         translate(bobPos.x, bobPos.y);
-        ellipseMode(CENTER);
+        ellipseMode(RADIUS);
         strokeWeight(3);
         fill("blue");
         ellipse(0, 0, this.r, this.r);
