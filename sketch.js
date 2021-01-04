@@ -4,6 +4,8 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Constraint = Matter.Constraint;
+const Mouse = Matter.Mouse;
+const MouseConstraint = Matter.MouseConstraint;
 
 function preload()
 {
@@ -17,6 +19,14 @@ function setup() {
 
 	engine = Engine.create();
 	world = engine.world;
+
+	let canvasmouse = Mouse.create(canvas.elt);
+	canvasmouse.pixelRatio = pixelDensity();
+	let options = {
+		mouse: canvasmouse
+	};
+	mConstraint = MouseConstraint.create(engine, options);
+	World.add(world, mConstraint);
 
 	//Create the Bodies Here.
 	bob3 = new bob(400, 400, 25);
@@ -53,10 +63,8 @@ function draw() {
  
 }
 
-function keyPressed(){
-	if(keyCode === UP_ARROW){
-		Matter.Body.applyForce(bob1.body, bob1.position, {x: 50, y: 50})
-	}
+function mouseDragged(){
+		Matter.Body.setPosition(bob1.body, {x: mouseX, y: mouseY})
 }
 
 
